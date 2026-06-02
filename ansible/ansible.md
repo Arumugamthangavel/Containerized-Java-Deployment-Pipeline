@@ -25,6 +25,8 @@
 sudo apt update
 sudo apt install ansible -y
 ```
+! different OS machine run on different install command. so, best checking on net first before running it.
+
 
 ### Verify Installation
 
@@ -40,12 +42,24 @@ ansible --version
 * creating a user
 * adding password to that user
 * giving nopassword permission 
-```bash
+```
 sudo useradd ansible
 sudo passwd ansible
 sudo visudo
 <ansible ALL=(ALL) NOPASSWD: ALL>
 ```
+
+### Node-2 (Amazon Linux 2023)
+* creating a user
+* adding password to that user
+* giving nopassword permission 
+```
+sudo useradd ansible
+sudo passwd ansible
+sudo visudo
+<ansible ALL=(ALL) NOPASSWD: ALL>
+```
+
 * now, need to find sshd.config file. (usually located in /ect/ssh/sshd_config/)
 * to change password authentication from no to yes
 * one of the challenge different OS machine has different location for this line
@@ -60,13 +74,6 @@ Password Authentication: Yes
 ```
 sudo systemctl restart sshd
 ```
-### Node-2 (Amazon Linux 2023)
-
-```bash
-sudo useradd ansible
-sudo passwd ansible
-```
-
 ---
 
 ## Configure SSH Key Authentication
@@ -95,11 +102,13 @@ ssh ansible@<node-2-private-ip>
 
 ---
 
-## Create Inventory
+## Create ansible inventory
+* make ansible directory
+* inside that, make ansible.config and hosts file
+  
+in hosts:
 
-Example inventory:
-
-```ini
+```
 [node]
 172.31.xx.xx
 172.31.xx.xx
@@ -107,7 +116,11 @@ Example inventory:
 [node:vars]
 ansible_user=ansible
 ```
-
+in ansible.cfg
+```
+[defaults]
+inventory = /home/ansible/ansible/hosts
+```
 ---
 
 ## Test Connectivity
