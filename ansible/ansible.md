@@ -56,7 +56,7 @@ sudo visudo
 * now, need to find sshd.config file. (usually located in /ect/ssh/sshd_config/)
 * to change password authentication from no to yes
 * one of the challenge in this process is that different OS machine has different location for this (sshd.config)
-* #### it is important to remember that only find and change password authentication only. anything other than that changed might trigger error
+* #### it is important to remember that only find that (sshd.config) and change password authentication only. anything other than that changed might trigger error
 ```
 Password Authentication: No
          ||
