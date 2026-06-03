@@ -40,22 +40,13 @@ ansible --version
 
 ## Create Ansible User
 
-### Node-1 (RHEL)
-* creating a user
+### Node-1 (SUSE Linux), Node-2 (Ubuntu), Node-3 (Dabian)
+* creating a user named "ansible"
 * adding password to that user
 * giving nopassword permission 
 ```
-sudo useradd ansible
-sudo passwd ansible
-sudo visudo
-<ansible ALL=(ALL) NOPASSWD: ALL>
-```
-
-### Node-2 (Amazon Linux 2023)
-* creating a user
-* adding password to that user
-* giving nopassword permission 
-```
+sudo adduser ansible
+      (OR)
 sudo useradd ansible
 sudo passwd ansible
 sudo visudo
@@ -64,8 +55,8 @@ sudo visudo
 
 * now, need to find sshd.config file. (usually located in /ect/ssh/sshd_config/)
 * to change password authentication from no to yes
-* one of the challenge different OS machine has different location for this line
-* # it is important to remember that only find and change password authentication only. anything other changed might trigger error
+* one of the challenge in this process is that different OS machine has different location for this (sshd.config)
+* #### it is important to remember that only find and change password authentication only. anything other than that changed might trigger error
 ```
 Password Authentication: No
          ||
