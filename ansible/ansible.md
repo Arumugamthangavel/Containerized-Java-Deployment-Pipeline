@@ -97,7 +97,7 @@ ssh ansible@<node-2-private-ip>
 
 ## Create ansible inventory
 * make ansible directory
-* inside that, make ansible.config and hosts file
+* inside that, make ansible.config and hosts files
   
 in hosts:
 
@@ -105,6 +105,7 @@ in hosts:
 [node]
 172.31.xx.xx
 172.31.xx.xx
+172.45.xx.xx
 
 [node:vars]
 ansible_user=ansible
