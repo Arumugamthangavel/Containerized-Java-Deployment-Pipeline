@@ -3,7 +3,7 @@
 ## Objective
 
 * Create an Ansible Controller and Managed Nodes
-* Configure one Ubuntu Controller and two Managed Nodes
+* Configure one AWS Linux Controller and Three Managed Nodes
 * Test Ansible connectivity using SSH
 * Execute ad-hoc commands from the controller
 
@@ -11,9 +11,10 @@
 
 | Server     | OS                       | Role                 |
 | ---------- | ------------------------ | -------------------- |
-| Controller | Ubuntu                   | Ansible Control Node |
-| Node-1     | Red Hat Enterprise Linux | Managed Node         |
-| Node-2     | Amazon Linux 2023        | Managed Node         |
+| Controller | Amazon Linux 2023        | Ansible Control Node |
+| Node-1     | SUSE Linux               | Managed Node         |
+| Node-1     | Ubuntu                   | Managed Node         |
+| Node-2     | Dabian                   | Managed Node         |
 
 ---
 
