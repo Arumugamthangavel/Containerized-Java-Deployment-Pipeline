@@ -20,11 +20,12 @@
 
 ## Install Ansible
 
-### Controller (Ubuntu)
+### Controller (Amazon Linux 2023)
 
 ```bash
-sudo apt update
-sudo apt install ansible -y
+sudo dnf update
+sudo dnf install python3-pip -y
+sudo pip3 install ansible
 ```
 ! different OS machine run on different install command. so, best checking on net first before running it.
 
