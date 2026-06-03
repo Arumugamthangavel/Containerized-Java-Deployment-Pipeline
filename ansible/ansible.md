@@ -13,8 +13,8 @@
 | ---------- | ------------------------ | -------------------- |
 | Controller | Amazon Linux 2023        | Ansible Control Node |
 | Node-1     | SUSE Linux               | Managed Node         |
-| Node-1     | Ubuntu                   | Managed Node         |
-| Node-2     | Dabian                   | Managed Node         |
+| Node-2     | Ubuntu                   | Managed Node         |
+| Node-3     | Dabian                   | Managed Node         |
 
 ---
 
