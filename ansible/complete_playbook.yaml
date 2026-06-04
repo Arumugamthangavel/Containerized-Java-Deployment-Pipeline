@@ -1,0 +1,101 @@
+---
+- name: Install Java on node-1
+  hosts: node-1
+  become: yes
+
+  tasks:
+    - name: Install Java
+      community.general.zypper:
+        name: java-21-openjdk
+        state: present
+
+    - name: Check Java version
+      ansible.builtin.command: java -version
+      register: java_output
+      changed_when: false
+
+    - name: Display Java version
+      ansible.builtin.debug:
+        var: java_output.stderr_lines
+
+# jenkins installing
+
+- name: Install Jenkins on Node-1
+  hosts: node-1
+  become: yes
+
+  tasks:
+  - name: Download Jenkins GPG key
+    get_url:
+      url: https://pkg.jenkins.io/opensuse-stable/jenkins.io.key
+      dest: /tmp/jenkins.io.key
+    
+  - name: Import Jenkins GPG key
+    rpm_key:
+      state: present
+      key: /tmp/jenkins.io.key
+
+  - name: Add Jenkins repository
+    community.general.zypper_repository:
+      name: Jenkins
+      repo: https://pkg.jenkins.io/opensuse-stable/
+      state: present
+      auto_import_keys: true
+
+  - name: Refresh repository cache
+    command: zypper refresh
+
+  - name: Install Jenkins
+    community.general.zypper:
+     name: jenkins
+     state: present
+
+  - name: Start and enable Jenkins service
+    systemd:
+      name: jenkins
+      state: started
+      enabled: true
+
+
+
+
+
+---
+- name: Install Docker and Tomcat on Node-2
+  hosts: node-2
+  become: yes
+
+  tasks:
+
+    - name: Update apt package index
+      apt:
+        update_cache: yes
+
+    - name: Install Docker
+      apt:
+        name: docker.io
+        state: present
+
+    - name: Start and enable Docker
+      service:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: Install Java
+      apt:
+        name: openjdk-17-jdk
+        state: present
+
+    - name: Install Tomcat
+      apt:
+        name:
+          - tomcat10
+          - tomcat10-admin
+        state: present
+
+    - name: Start and enable Tomcat
+      service:
+        name: tomcat10
+        state: started
+        enabled: yes
