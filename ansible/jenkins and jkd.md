@@ -1,5 +1,5 @@
 # Jenkins Installation using Ansible on openSUSE
-Objective
+Objective:
 
 Install Java and Jenkins on an openSUSE managed node using Ansible.
 
