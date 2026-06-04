@@ -83,6 +83,8 @@ View public key:
 
 ```bash
 cat ~/.ssh/id_rsa.pub
+   (or)
+cat ~/.ssh/id_ed25519
 ```
 
 ---
