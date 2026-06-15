@@ -99,10 +99,3 @@
         name: tomcat10
         state: started
         enabled: yes
-
-
-
-
-
-
-
